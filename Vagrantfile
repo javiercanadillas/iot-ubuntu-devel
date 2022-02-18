@@ -24,6 +24,8 @@ Vagrant.configure("2") do |config|
     vb.customize ["modifyvm", :id, "--vram", "128"]
     # Remember resolution
     vb.customize ["setextradata", :id, "GUI/LastGuestSizeHint"]
+    # Enable USB 2.0 controller (USB EHCI)
+    vb.customize ["modifyvm", :id, "--usbehci"]
   end
   # Update Ubuntu
   config.vm.provision "shell", path: "scripts/update_linux.sh"
