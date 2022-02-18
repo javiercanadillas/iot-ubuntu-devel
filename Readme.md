@@ -32,6 +32,8 @@ Automatic installation should start. Vagrant will download the Ubuntu installati
 Once installed, you should see the following screen:
 
 
+Log in into the system with the username `vagrant` and password `vagrant` and you should see the XFCE4 desktop in all its glory.
+
 If you wish to connect to the VM via SSH, you can also do:
 
 ```bash
