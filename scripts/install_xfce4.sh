@@ -9,7 +9,7 @@ echo set shared/default-x-display-manager lightdm | debconf-communicate
 # Remove previous Unity display manager configuration
 sudo rm /usr/share/lightdm/lightdm.conf.d/50-unity-greeter.conf
 # Create new display manager configuration file
-sudo cat <<- EOF > /usr/share/lightdm.conf.d/50-xfce-greeter.conf
+sudo cat <<- EOF > /usr/share/lightdm/lightdm.conf.d/50-xfce-greeter.conf
     [SeatDefaults]
     greeter-session=unity-greeter
     user-session=xfce
