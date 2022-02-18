@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
     # Enable clipboard
     vb.customize ["modifyvm", :id, "--clipboard-mode", "bidirectional"]
     # Set the VboxVGA graphics controller
-    vbox.customize ['modifyvm', :id, '--graphicscontroller', 'vboxvga']
+    vb.customize ['modifyvm', :id, '--graphicscontroller', 'vboxvga']
     # Increase video memory for enhanced screen resolution
     vb.customize ["modifyvm", :id, "--vram", "128"]
     # Remember resolution
