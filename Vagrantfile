@@ -31,6 +31,8 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "scripts/install_xfce4.sh"
   # Install required tools
   config.vm.provision "shell", path: "scripts/setup_iot.sh"
-  # Reboot the machine to have a clean slate
-  config.vm.provision "shell", path: "scripts/restart_machine.sh"
+  config.trigger.after [:provision] do |t|
+    t.name = "Reboot after provisioning"
+    t.run = { :inline => "vagrant reload" }
+  end
 end
