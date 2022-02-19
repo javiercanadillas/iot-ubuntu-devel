@@ -17,3 +17,6 @@ sudo cat <<- EOF > /usr/share/lightdm/lightdm.conf.d/50-xfce-greeter.conf
     autologin-user=vagrant
     autologin-user-timeout=0
 EOF
+# Set up Spanish keyboard
+sudo setxkbmap es
+sudo sed -i 's/XKBLAYOUT=\"\w*"/XKBLAYOUT=\"es\"/g' /etc/default/keyboard
