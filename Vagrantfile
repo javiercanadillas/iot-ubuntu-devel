@@ -1,6 +1,6 @@
 Vagrant.configure("2") do |config|
   # Install Virtualbox plugins for Guest Additions and Disk resize
-  config.vagrant.plugins = ["vagrant-vbguest", "vagrant-reload"]
+  config.vagrant.plugins = ["vagrant-vbguest"]
   #config.vbguest.installer_arguments = ["--with-autologon"]
   #config.vbguest.iso_path = "https://download.virtualbox.org/virtualbox/6.1.32/VBoxGuestAdditions_6.1.32.iso"
   config.vbguest.no_remote = true
@@ -9,6 +9,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "bento/ubuntu-21.10"
   # Set hostname
   config.vm.hostname = "sw4iot"
+  # Configure Virtualbox VM
   config.vm.provider "virtualbox" do |vb|
     # Enable GUI
     vb.gui = true
@@ -19,19 +20,24 @@ Vagrant.configure("2") do |config|
     # Enable clipboard
     vb.customize ["modifyvm", :id, "--clipboard-mode", "bidirectional"]
     # Set the VboxVGA graphics controller
-    vb.customize ['modifyvm', :id, '--graphicscontroller', 'vboxvga']
+    vb.customize ['modifyvm', :id, '--graphicscontroller', 'vmsvga']
     # Increase video memory for enhanced screen resolution
     vb.customize ["modifyvm", :id, "--vram", "128"]
     # Remember resolution
     vb.customize ["setextradata", :id, "GUI/LastGuestSizeHint"]
-    # Enable USB 2.0 controller (USB EHCI)
-    vb.customize ["modifyvm", :id, "--usbehci"]
+    # Scale display by a factor of 2 (less pixel density)
+    vb.customize ["setextradata", :id, "GUI/ScaleFactor", "2"]
+    # Enable USB 2.0 & 3.0 controllers (USB EHCI & XHCI)
+    vb.customize ["modifyvm", :id, "--usbehci", "on", "--usbxhci", "on"]
   end
   # Update Ubuntu
   config.vm.provision "shell", path: "scripts/update_linux.sh"
   # Install and configure XFCE4
   config.vm.provision "shell", path: "scripts/install_xfce4.sh"
-  # Install required tools
-  config.vm.provision "shell", path: "scripts/setup_iot.sh"
-  config.vm.provision :reload
+  config.vm.provision "shell" do |shell|
+    # Install required tools
+    shell.path = "scripts/setup_iot.sh"
+    # Rebooting the machine after changes
+    shell.reboot = true
+  end
 end

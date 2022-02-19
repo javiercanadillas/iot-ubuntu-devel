@@ -7,4 +7,4 @@ echo "alias python=python3" >> $HOME/.bashrc
 # Install Lab tooling
 sudo apt install -y minicom
 sudo apt install -y curl
-bash <(curl -s https://thonny.org/installer-for-linux)
+yes "" | bash <(curl -s https://thonny.org/installer-for-linux) && exit 0
