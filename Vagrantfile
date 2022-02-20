@@ -1,4 +1,6 @@
 Vagrant.configure("2") do |config|
+  # Prevent issues with the SSH key
+  config.ssh.insert_key=false
   # Install Virtualbox plugins for Guest Additions and Disk resize
   config.vagrant.plugins = ["vagrant-vbguest"]
   #config.vbguest.installer_arguments = ["--with-autologon"]
