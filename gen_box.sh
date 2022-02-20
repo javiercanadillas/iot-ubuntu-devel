@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 BASE_VM_NAME="sw4iot"
-OUTPUT_FILENAME="Ubuntu-2110-IoT-Dev"
+OUTPUT_FILENAME="Ubuntu-2110-IoT-Dev.box"
 INFO_FILE="info.json"
 
 vagrant package \
