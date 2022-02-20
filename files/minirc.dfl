@@ -1,0 +1,3 @@
+# Custom Minicom configuration file for ESP32 MCU
+pu port             /dev/ttyUSB0
+pu rtscts           No

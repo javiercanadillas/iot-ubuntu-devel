@@ -24,7 +24,7 @@ Vagrant.configure("2") do |config|
     # Increase video memory for enhanced screen resolution
     vb.customize ["modifyvm", :id, "--vram", "128"]
     # Remember resolution
-    vb.customize ["setextradata", :id, "GUI/LastGuestSizeHint"]
+    vb.customize ["setextradata", :id, "GUI/LastGuestSizeHint", "1920,1080"]
     # Configure video acceleration
     vb.customize ['modifyvm', :id, '--accelerate2dvideo', 'off']
     vb.customize ['modifyvm', :id, '--accelerate3d', 'on']
@@ -33,6 +33,8 @@ Vagrant.configure("2") do |config|
     # Enable USB 2.0 & 3.0 controllers (USB EHCI & XHCI)
     vb.customize ["modifyvm", :id, "--usbehci", "on", "--usbxhci", "on"]
   end
+  # Upload necessary end user files
+  config.vm.provision "file", source: "files/minirc.dfl", destination: "$HOME/.minirc.dfl"
   # Sync folder
   config.vm.synced_folder "shared/", "/mnt/shared", mount_options: ["dmode=777", "fmode=666"]  
   # Update Ubuntu

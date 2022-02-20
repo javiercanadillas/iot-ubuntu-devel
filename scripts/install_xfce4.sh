@@ -9,6 +9,8 @@ echo set shared/default-x-display-manager lightdm | debconf-communicate
 # Remove previous Unity display manager configuration
 sudo rm /usr/share/lightdm/lightdm.conf.d/50-unity-greeter.conf
 # Create new display manager configuration file
+# Vagrant file provisioner uses scp, there's no real sudo option there
+# so using a heredoc to create the file with root permissions
 sudo cat <<- EOF > /usr/share/lightdm/lightdm.conf.d/50-xfce-greeter.conf
     [SeatDefaults]
     greeter-session=unity-greeter
