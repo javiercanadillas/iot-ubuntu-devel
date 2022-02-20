@@ -5,7 +5,7 @@ INFO_FILE="info.json"
 
 vagrant package \
     --base "$BASE_VM_NAME" \
-    --output "$OUTPUT_FILENAME" \
+    --output "box/$OUTPUT_FILENAME" \
     --info "$INFO_FILE" \
     --color \
     --debug-timestamp
