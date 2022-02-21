@@ -99,6 +99,9 @@ Following the previous steps, I've created a new Vagrant box based on the modifi
 ```json
 Vagrant.configure("2") do |config|
   config.vm.box = "javiercanadillas/sw4iot"
+  config.vm.provider "virtualbox" do |vb|
+    vb.gui = true
+  end
 end
 ```
 
