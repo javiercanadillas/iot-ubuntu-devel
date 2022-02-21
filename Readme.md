@@ -111,6 +111,8 @@ Once the `Vagrantfile` in your new directory is created, go ahead and launch it:
 vagrant up
 ```
 
+If you what more details on how to use this newly built VM image, [read this article in Cañadillas's Docs](http://localhost:8000/iot/IoT_Devices_Lab_Series-1/).
+
 ## Installed software
 
 For details on what's installed in the image, please read the project's `Vagrantfile` and the linked scripts.
