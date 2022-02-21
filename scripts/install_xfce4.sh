@@ -12,7 +12,7 @@ sudo rm /usr/share/lightdm/lightdm.conf.d/50-unity-greeter.conf
 # Vagrant file provisioner uses scp, there's no real sudo option there
 # so using a heredoc to create the file with root permissions
 sudo cat <<- EOF > /usr/share/lightdm/lightdm.conf.d/50-xfce-greeter.conf
-    [SeatDefaults]
+[SeatDefaults]
     greeter-session=unity-greeter
     user-session=xfce
     allow-guest=false
