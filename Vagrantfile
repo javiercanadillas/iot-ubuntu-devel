@@ -32,8 +32,8 @@ Vagrant.configure("2") do |config|
     vb.customize ['modifyvm', :id, '--accelerate3d', 'on']
     # Scale display by a factor of 2 (less pixel density)
     vb.customize ["setextradata", :id, "GUI/ScaleFactor", "2"]
-    # Enable USB 2.0 & 3.0 controllers (USB EHCI & XHCI)
-    vb.customize ["modifyvm", :id, "--usbehci", "on", "--usbxhci", "on"]
+    # Enable USB 2.0 controller (USB EHCI)
+    vb.customize ["modifyvm", :id, "--usbehci"]
   end
   # Upload necessary end user files
   config.vm.provision "file", source: "files/minirc.dfl", destination: "$HOME/.minirc.dfl"
